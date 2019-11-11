@@ -3,10 +3,10 @@ def isWordGuessed(secretWord, lettersGuessed):
     secretWord='ust'
     for x in secretWord:
         if x in lettersGuessed:
-            bool = True
+            bloo = True
             continue
         else:
-            bool = False
+            bloo = False
             break
     return bloo
     
