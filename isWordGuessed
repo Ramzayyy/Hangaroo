@@ -1,0 +1,11 @@
+import string
+def isWordGuessed(secretWord, lettersGuessed):
+    secretWord='ust'
+    for x in secretWord:
+        if x in lettersGuessed:
+            bloo = True
+            continue
+        else:
+            bloo = False
+            break
+    return bloo
