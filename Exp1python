@@ -9,23 +9,26 @@ def isWordGuessed(secretWord, lettersGuessed):
             bloo = False
             break
     return bloo
-    
+    import string
 def getGuessedWord(secretWord, lettersGuessed):
     isGuessed = secretWord
     for x in isGuessed:
         if x in lettersGuessed:
             continue
         else:
-            isGuessed = isGuessed.replace(x, "[]")
+            isGuessed = isGuessed.replace(x, ".")
     return isGuessed
-
+    import string
 def getAvailableLetters(lettersGuessed):
     availableLetters = string.ascii_lowercase
     for x in lettersGuessed:
-            availableLetters = availableLetters.replace(x, '[]')
+            availableLetters = availableLetters.replace(x, '.')
     return availableLetters
-
+import string
 def Hangaroo(secretWord):
+    from isWordGuessed import isWordGuessed
+    from getGuessedWord import getGuessedWord
+    from getAvailableLetters import getAvailableLetters
     mistakesMade = 0
     lettersGuessed = set()
     i = 1
@@ -42,11 +45,14 @@ def Hangaroo(secretWord):
             mistakesMade = mistakesMade
         else:
             mistakesMade = mistakesMade + 1
+            if mistakesMade==3:
+                print('restart?')
+                break
         print(getGuessedWord(secretWord, lettersGuessed))
         print(getAvailableLetters(lettersGuessed))
         print(mistakesMade)
         print(isWordGuessed(secretWord, lettersGuessed))
         if isWordGuessed(secretWord, lettersGuessed) == True:
             i = 0
-    print('Congratulations!') 
+    print('Finish!')
 Hangaroo('ust')
