@@ -1,0 +1,32 @@
+import string
+def Hangaroo(secretWord):
+    from isWordGuessed import isWordGuessed
+    from getGuessedWord import getGuessedWord
+    from getAvailableLetters import getAvailableLetters
+    mistakesMade = 0
+    lettersGuessed = set()
+    i = 1
+    while  i == 1:
+        imput = input('Input letter here: ')
+        while len(imput) > 1 or imput in lettersGuessed:
+            if imput in lettersGuessed:
+                print('This has already been guessed - try again!')
+            else:
+                print('This is not a letter! Try again!')
+            imput = input('Input letter here: ')
+        lettersGuessed.add(imput)
+        if imput in secretWord:
+            mistakesMade = mistakesMade
+        else:
+            mistakesMade = mistakesMade + 1
+            if mistakesMade==3:
+                print('restart?')
+                break
+        print(getGuessedWord(secretWord, lettersGuessed))
+        print(getAvailableLetters(lettersGuessed))
+        print(mistakesMade)
+        print(isWordGuessed(secretWord, lettersGuessed))
+        if isWordGuessed(secretWord, lettersGuessed) == True:
+            i = 0
+    print('Finish!')
+Hangaroo('ust')
